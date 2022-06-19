@@ -1,3 +1,40 @@
+export type Point = {
+  readonly x: number,
+  y?: number,
+};
+
+// export type Mapped<T> = {
+//   [P in keyof T]: T[P]
+// }
+
+// export type Mapped<T> = {
+//   readonly [P in keyof T]: T[P]
+// }
+
+// export type Mapped<T> = {
+//   +readonly [P in keyof T]: T[P]
+// }
+
+// export type Mapped<T> = {
+//   +readonly [P in keyof T]?: T[P]
+// }
+
+// export type Mapped<T> = {
+//   +readonly [P in keyof T]+?: T[P]
+// }
+
+export type Mapped<T> = {
+  +readonly [P in keyof T]-?: T[P]
+}
+
+export type Result = Mapped<Point>;
+
+// ============================================================
+
+// export type Partial<T> = {
+//   [P in keyof T]?: T[P] | undefined;
+// }
+
 export class State<T> {
   constructor(public current: T) { }
   update(next: Partial<T>) {
